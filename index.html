@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Учебный музыкальный плеер">
+  <title>Vibe Player</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%B5%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar__header">
+        <span class="category-header-icon" aria-hidden="true">||\</span>
+        <span>Категории</span>
+      </div>
+
+      <nav class="category-list" aria-label="Музыкальные категории">
+        <button class="category-card is-active" data-category="jazz" type="button">
+          <span class="category-icon category-icon--jazz" aria-hidden="true">♫</span>
+          <span class="category-info">
+            <strong>Jazz</strong>
+            <small>Плейлист · <span data-count="jazz">0</span> треков</small>
+          </span>
+          <span class="category-sound" aria-hidden="true">◖</span>
+        </button>
+
+        <button class="category-card" data-category="classic" type="button">
+          <span class="category-icon category-icon--classic" aria-hidden="true">♫</span>
+          <span class="category-info">
+            <strong>Classic</strong>
+            <small>Плейлист · <span data-count="classic">0</span> треков</small>
+          </span>
+        </button>
+
+        <button class="category-card" data-category="blues" type="button">
+          <span class="category-icon category-icon--blues" aria-hidden="true">♫</span>
+          <span class="category-info">
+            <strong>Blues</strong>
+            <small>Плейлист · <span data-count="blues">0</span> треков</small>
+          </span>
+        </button>
+
+        <button class="category-card" data-category="favorites" type="button">
+          <span class="category-icon category-icon--favorites" aria-hidden="true">♥</span>
+          <span class="category-info">
+            <strong>Избранное</strong>
+            <small>Плейлист · <span data-count="favorites">0</span> треков</small>
+          </span>
+        </button>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <section class="playlist-hero">
+        <div class="playlist-cover" id="heroCover" aria-hidden="true">♫</div>
+        <div class="playlist-heading">
+          <span>Плейлист</span>
+          <h1 id="playlistTitle">Jazz</h1>
+        </div>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Переключить тему">
+          <span class="theme-icon" aria-hidden="true">☾</span>
+        </button>
+      </section>
+
+      <section class="tracks-section">
+        <div class="playlist-actions">
+          <button class="round-play" id="mainPlayButton" type="button" aria-label="Воспроизвести">
+            <span id="mainPlayIcon">▶</span>
+          </button>
+          <button class="icon-button shuffle-btn" id="shuffleButton" type="button" aria-label="Перемешать" title="Перемешать (случайный порядок)">⤭</button>
+        </div>
+
+        <div class="track-table" id="trackList" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="player-bar">
+      <div class="now-playing">
+        <div class="mini-cover" id="miniCover" aria-hidden="true">♫</div>
+        <div class="now-playing__text">
+          <strong id="currentTitle">Выберите трек</strong>
+          <span id="currentArtist">—</span>
+        </div>
+        <button class="favorite-button" id="favoriteButton" type="button" aria-label="Добавить в избранное">♡</button>
+      </div>
+
+      <div class="player-center">
+        <div class="player-controls">
+          <button class="control-button shuffle-btn" id="shuffleBottom" type="button" aria-label="Перемешать" title="Перемешать (случайный порядок)">⤭</button>
+          <button class="control-button" id="prevButton" type="button" aria-label="Предыдущий трек">◀</button>
+          <button class="control-button control-button--play" id="playButton" type="button" aria-label="Воспроизвести">
+            <span id="playIcon">▶</span>
+          </button>
+          <button class="control-button" id="nextButton" type="button" aria-label="Следующий трек">▶</button>
+          <button class="control-button" id="repeatButton" type="button" aria-label="Повтор">↻</button>
+        </div>
+
+        <div class="progress-row">
+          <time id="currentTime">0:00</time>
+          <div class="progress-track" id="progressTrack" role="slider" tabindex="0"
+               aria-label="Прогресс воспроизведения" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div class="progress-fill" id="progressFill"></div>
+            <div class="progress-thumb" id="progressThumb"></div>
+          </div>
+          <time id="duration">0:00</time>
+        </div>
+      </div>
+
+      <div class="volume-control">
+        <button class="control-button" id="muteButton" type="button" aria-label="Выключить звук">
+          <span id="volumeIcon">◖</span>
+        </button>
+        <input id="volumeSlider" type="range" min="0" max="100" value="70" aria-label="Громкость">
+      </div>
+    </footer>
+  </div>
+
+  <script src="./js/app.js"></script>
+</body>
+</html>
